@@ -2,6 +2,8 @@ package top.fzqblog.shiro;
 
 
 
+import java.util.Set;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.shiro.authc.AuthenticationException;
@@ -9,13 +11,17 @@ import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 
 import top.fzqblog.po.model.User;
+import top.fzqblog.service.RoleService;
 import top.fzqblog.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
+import com.sun.tools.javac.util.List;
 
 
 
@@ -26,11 +32,18 @@ public class UserRealm extends AuthorizingRealm{
 	@Autowired
 	private UserService userService;
 	
+	@Autowired
+	private RoleService roleService;
+	
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(
 			PrincipalCollection principals) {
 		LOGGER.info("授权开始......");
-		return null;
+		ShiroUser shiroUser = (ShiroUser) principals.getPrimaryPrincipal();
+		Set<String> permissions = this.roleService.findResourceListByRoleId(shiroUser.roleSet);
+		SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
+		simpleAuthorizationInfo.addStringPermissions(permissions);
+		return simpleAuthorizationInfo;
 	}
 
 	
@@ -46,7 +59,8 @@ public class UserRealm extends AuthorizingRealm{
 		if(user == null || user.getStatus() == 1){
 			return null;
 		}
-		ShiroUser shiroUser = new ShiroUser(user.getId(), user.getLoginname(), user.getName(), null);
+		Set<Long> roleSet = this.userService.findRoleIdsByUserId(user.getId());
+		ShiroUser shiroUser = new ShiroUser(user.getId(), user.getLoginname(), user.getName(), roleSet);
 		AuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(shiroUser, user.getPassword(), getName());
 		return authenticationInfo;
 	}

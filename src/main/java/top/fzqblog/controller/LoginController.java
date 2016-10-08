@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.alibaba.druid.sql.dialect.oracle.ast.clause.ModelClause.ReturnRowsClause;
+
 import top.fzqblog.service.UserService;
 import top.fzqblog.utils.StringUtils;
 
@@ -81,4 +83,11 @@ public class LoginController extends BaseController{
 		subject.logout();
 		return renderSuccess();
 	}
+	
+	@RequestMapping("unauth")
+	public ModelAndView unauth(){
+		ModelAndView view = new ModelAndView("/page/unauth");
+		return view;
+	}
+	
 }

@@ -51,6 +51,9 @@ public class UserServiceTest extends AbstractTestNGSpringContextTests{
 	@Autowired
 	private UserService userService;
 	
+	@Autowired
+	private RoleService roleService;
+	
 	
 	@Test
 	public void testFindUserByLoginname(){
@@ -60,6 +63,6 @@ public class UserServiceTest extends AbstractTestNGSpringContextTests{
 	@Test
 	public void testSelectRoleIdsByUserId(){
 		Set<Long> roleSet = this.userService.findRoleIdsByUserId(1);
-		System.out.println(this.userService.findResourceIdByRoleId(roleSet));
+		System.out.println(this.roleService.findResourceListByRoleId(roleSet));
 	}
 }

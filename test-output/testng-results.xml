@@ -2,20 +2,20 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="3129" started-at="2016-10-06T14:06:40Z" finished-at="2016-10-06T14:06:43Z">
+  <suite name="Default suite" duration-ms="4206" started-at="2016-10-08T07:06:14Z" finished-at="2016-10-08T07:06:18Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="3129" started-at="2016-10-06T14:06:40Z" finished-at="2016-10-06T14:06:43Z">
+    <test name="Default test" duration-ms="4206" started-at="2016-10-08T07:06:14Z" finished-at="2016-10-08T07:06:18Z">
       <class name="top.fzqblog.service.UserServiceTest">
-        <test-method status="PASS" signature="springTestContextBeforeTestClass()[pri:0, instance:top.fzqblog.service.UserServiceTest@3bf7ca37]" name="springTestContextBeforeTestClass" is-config="true" duration-ms="14" started-at="2016-10-06T22:06:40Z" finished-at="2016-10-06T22:06:40Z">
+        <test-method status="PASS" signature="springTestContextBeforeTestClass()[pri:0, instance:top.fzqblog.service.UserServiceTest@79079097]" name="springTestContextBeforeTestClass" is-config="true" duration-ms="11" started-at="2016-10-08T15:06:14Z" finished-at="2016-10-08T15:06:14Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- springTestContextBeforeTestClass -->
-        <test-method status="PASS" signature="springTestContextPrepareTestInstance()[pri:0, instance:top.fzqblog.service.UserServiceTest@3bf7ca37]" name="springTestContextPrepareTestInstance" is-config="true" duration-ms="2510" started-at="2016-10-06T22:06:40Z" depends-on-methods="org.springframework.test.context.testng.AbstractTestNGSpringContextTests.springTestContextBeforeTestClass" finished-at="2016-10-06T22:06:42Z">
+        <test-method status="PASS" signature="springTestContextPrepareTestInstance()[pri:0, instance:top.fzqblog.service.UserServiceTest@79079097]" name="springTestContextPrepareTestInstance" is-config="true" duration-ms="3456" started-at="2016-10-08T15:06:14Z" depends-on-methods="org.springframework.test.context.testng.AbstractTestNGSpringContextTests.springTestContextBeforeTestClass" finished-at="2016-10-08T15:06:18Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- springTestContextPrepareTestInstance -->
-        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:top.fzqblog.service.UserServiceTest@3bf7ca37]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="3" started-at="2016-10-06T22:06:42Z" finished-at="2016-10-06T22:06:42Z">
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:top.fzqblog.service.UserServiceTest@79079097]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="2" started-at="2016-10-08T15:06:18Z" finished-at="2016-10-08T15:06:18Z">
           <params>
             <param index="0">
               <value>
@@ -26,11 +26,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- springTestContextBeforeTestMethod -->
-        <test-method status="PASS" signature="testSelectRoleIdsByUserId()[pri:0, instance:top.fzqblog.service.UserServiceTest@3bf7ca37]" name="testSelectRoleIdsByUserId" duration-ms="578" started-at="2016-10-06T22:06:42Z" finished-at="2016-10-06T22:06:43Z">
+        <test-method status="PASS" signature="testSelectRoleIdsByUserId()[pri:0, instance:top.fzqblog.service.UserServiceTest@79079097]" name="testSelectRoleIdsByUserId" duration-ms="713" started-at="2016-10-08T15:06:18Z" finished-at="2016-10-08T15:06:18Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSelectRoleIdsByUserId -->
-        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:top.fzqblog.service.UserServiceTest@3bf7ca37]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="0" started-at="2016-10-06T22:06:43Z" finished-at="2016-10-06T22:06:43Z">
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:top.fzqblog.service.UserServiceTest@79079097]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="0" started-at="2016-10-08T15:06:18Z" finished-at="2016-10-08T15:06:18Z">
           <params>
             <param index="0">
               <value>
@@ -41,7 +41,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- springTestContextAfterTestMethod -->
-        <test-method status="PASS" signature="springTestContextAfterTestClass()[pri:0, instance:top.fzqblog.service.UserServiceTest@3bf7ca37]" name="springTestContextAfterTestClass" is-config="true" duration-ms="0" started-at="2016-10-06T22:06:43Z" finished-at="2016-10-06T22:06:43Z">
+        <test-method status="PASS" signature="springTestContextAfterTestClass()[pri:0, instance:top.fzqblog.service.UserServiceTest@79079097]" name="springTestContextAfterTestClass" is-config="true" duration-ms="0" started-at="2016-10-08T15:06:18Z" finished-at="2016-10-08T15:06:18Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- springTestContextAfterTestClass -->

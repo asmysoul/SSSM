@@ -14,6 +14,18 @@
     id, name, seq, description, status
   </sql>
   
+ <select id="selectResourceListByRoleId" resultType="java.lang.String">
+ 	select url from role r 
+ 	left join role_resource rr 
+ 		on r.id=rr.role_id 
+ 	left join resource re
+ 		on rr.resource_id=re.id
+ 		where r.id in (
+ 			<foreach collection="roleIds" item="roleId" separator=",">
+ 				#{roleId}
+ 			</foreach>
+ 		)
+ </select>
   
   <delete id="delete" parameterType="java.lang.Long" >
     delete from role

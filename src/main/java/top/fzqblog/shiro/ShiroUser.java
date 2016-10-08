@@ -18,7 +18,7 @@ public class ShiroUser implements Serializable {
     public Long id;
     public String loginname;
     public String name;
-    public Set<Long> roleList;
+    public Set<Long> roleSet;
     
     /**
 	 * @Description TODO(这里用一句话描述这个方法的作用)
@@ -37,12 +37,12 @@ public class ShiroUser implements Serializable {
 	 * @param name
 	 * @param roleList
 	 */
-	public ShiroUser(Long id, String loginname, String name, Set<Long> roleList) {
+	public ShiroUser(Long id, String loginname, String name, Set<Long> roleSet) {
 		super();
 		this.id = id;
 		this.loginname = loginname;
 		this.name = name;
-		this.roleList = roleList;
+		this.roleSet = roleSet;
 	}
 
 

@@ -35,7 +35,7 @@
       #{status,jdbcType=TINYINT})
   </insert>
   
- 
+
   
   <update id="update" parameterType="top.fzqblog.po.model.Resource" >
     update resource
