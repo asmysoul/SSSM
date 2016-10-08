@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="top.fzqblog.mapper.RoleMapper" >
+  <resultMap id="BaseResultMap" type="top.fzqblog.po.model.Role" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="seq" property="seq" jdbcType="TINYINT" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+  </resultMap>
+  
+  
+  <sql id="Base_Column_List" >
+    id, name, seq, description, status
+  </sql>
+  
+  
+  <delete id="delete" parameterType="java.lang.Long" >
+    delete from role
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  
+  <insert id="insert" parameterType="top.fzqblog.po.model.Role" >
+    insert into role (id, name, seq, 
+      description, status)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{seq,jdbcType=TINYINT}, 
+      #{description,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT})
+  </insert>
+  
+
+
+  <update id="update" parameterType="top.fzqblog.po.model.Role" >
+    update role
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="seq != null" >
+        seq = #{seq,jdbcType=TINYINT},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
