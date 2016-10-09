@@ -14,10 +14,54 @@
     <result column="status" property="status" jdbcType="TINYINT" />
   </resultMap>
   
+      <sql id="Base_Condition">
+  	<where>
+  		<if test="id != null and id!='' ">
+  			and id = #{id}
+  		</if>
+  		<if test="pid != null and pid!='' ">
+  			and pid = #{pid}
+  		</if>
+  	</where>
+  </sql>
+
+  
   
   <sql id="Base_Column_List" >
     id, name, url, description, resource_type, icon, pid, seq, create_time, status
   </sql>
+  
+  <select id="selectMenuByRoleId" resultMap="BaseResultMap">
+  	SELECT
+     DISTINCT S.*
+    FROM
+        role r
+    LEFT JOIN role_resource e ON r.id = e.role_id
+    LEFT JOIN resource s ON e.resource_id = s.id
+    WHERE
+        r.id IN (
+		<foreach collection="roleIds" item="roleId" separator=",">
+			#{roleId}
+		</foreach>) 
+        AND s.resource_type =#{resourceType} AND s.pid is NULL 
+		order by seq asc
+  </select>
+  
+   <select id="selectMenuByRoleIdAndPid" resultMap="BaseResultMap">
+  	SELECT
+     DISTINCT S.*
+    FROM
+        role r
+    LEFT JOIN role_resource e ON r.id = e.role_id
+    LEFT JOIN resource s ON e.resource_id = s.id
+    WHERE
+        r.id IN (
+		<foreach collection="roleIds" item="roleId" separator=",">
+			#{roleId}
+		</foreach>) 
+        AND s.resource_type =#{resourceType} AND s.pid =#{pid}
+		order by seq asc
+  </select>
  
   <delete id="delete" parameterType="java.lang.Long" >
     delete from resource

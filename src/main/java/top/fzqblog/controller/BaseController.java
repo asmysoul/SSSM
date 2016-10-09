@@ -78,6 +78,17 @@ public class BaseController {
 	
 	/**
 	 * 
+	 * @Description (TODO这里用一句话描述这个方法的作用)
+	 * @return 当前的shiroUser
+	 */
+	public ShiroUser getShiroUser(){
+		Subject subject = SecurityUtils.getSubject();
+		ShiroUser shiroUser = (ShiroUser) subject.getPrincipal();
+		return shiroUser;
+	}
+	
+	/**
+	 * 
 	 * @Description 得到当前登录用户的ID
 	 * @return
 	 */

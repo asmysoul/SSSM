@@ -32,24 +32,8 @@
             </div>
         </div>
     <div data-options="region:'west',title:'菜单',split:true" style="width: 160px; overflow: hidden;overflow-y:auto; padding:0px;margin:0;">
-    		<ul id="tt" class="easyui-tree">
-    <li>
-        <span>Folder</span>
-        <ul>
-		            <li>
-		                <span>Sub Folder 1</span>
-		                <ul>
-		                    <li><span><a href="#">File 11</a></span></li>
-		                    <li><span>File 12</span></li>
-		                    <li><span>File 13</span></li>
-		                </ul>
-		            </li>
-		            <li><span>File 2</span></li>
-		            <li><span>File 3</span></li>
-		        </ul>
-		    </li>
-		    <li><span>File21</span></li>
-		</ul>	    		
+    		<ul id="menu" class="easyui-tree">
+			</ul>	    		
     </div>
     <div data-options="region:'center',title:''" style="overflow: hidden;padding:0;margin:0;">
 			<div id="tt" class="easyui-tabs" data-options="fit:true">
