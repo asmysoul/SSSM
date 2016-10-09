@@ -3,16 +3,16 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="top.fzqblog.service.ResourceServiceTest">
+      <class name="top.fzqblog.service.RoleServiceTest">
         <methods>
           <include name="springTestContextBeforeTestClass"/>
           <include name="springTestContextPrepareTestInstance"/>
           <include name="springTestContextAfterTestClass"/>
           <include name="springTestContextBeforeTestMethod"/>
-          <include name="testSelectRoleIdsByUserId"/>
+          <include name="testFindRoleByPage"/>
           <include name="springTestContextAfterTestMethod"/>
         </methods>
-      </class> <!-- top.fzqblog.service.ResourceServiceTest -->
+      </class> <!-- top.fzqblog.service.RoleServiceTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

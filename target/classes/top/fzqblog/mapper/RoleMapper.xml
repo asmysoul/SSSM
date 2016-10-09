@@ -10,9 +10,23 @@
   </resultMap>
   
   
+  
   <sql id="Base_Column_List" >
     id, name, seq, description, status
+              
   </sql>
+  
+  <select id="selectList" resultMap="BaseResultMap">
+  	select <include refid="Base_Column_List"/> from role 
+  		ORDER BY seq ASC
+  				<if test="page != null">
+  					limit #{page.start},#{page.end}
+  				</if>
+  </select>
+  
+  <select id="selectCount" resultType="java.lang.Long">
+  		select Count(1) from role
+  </select>
   
  <select id="selectResourceListByRoleId" resultType="java.lang.String">
  	select url from role r 

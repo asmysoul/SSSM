@@ -29,7 +29,11 @@
  *****************************************************************/
 package top.fzqblog.service;
 
+import java.util.List;
 import java.util.Set;
+
+import top.fzqblog.po.model.Role;
+import top.fzqblog.po.vo.PageResult;
 
 /**
  * @ClassName RoleService
@@ -40,4 +44,6 @@ import java.util.Set;
  */
 public interface RoleService {
 	public Set<String> findResourceListByRoleId(Set<Long> roleIds);
+	
+	public PageResult findRolesByPage(Integer page, Integer rows);
 }

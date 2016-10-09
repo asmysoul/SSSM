@@ -41,6 +41,8 @@ public class UserRealm extends AuthorizingRealm{
 		LOGGER.info("授权开始......");
 		ShiroUser shiroUser = (ShiroUser) principals.getPrimaryPrincipal();
 		Set<String> permissions = this.roleService.findResourceListByRoleId(shiroUser.roleSet);
+		permissions.remove("");
+		System.out.println(permissions);
 		SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
 		simpleAuthorizationInfo.addStringPermissions(permissions);
 		return simpleAuthorizationInfo;

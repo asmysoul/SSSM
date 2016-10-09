@@ -29,15 +29,19 @@
  *****************************************************************/
 package top.fzqblog.service.impl;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import top.fzqblog.mapper.RoleMapper;
+import top.fzqblog.po.enums.OrderByEnum;
 import top.fzqblog.po.model.Role;
 import top.fzqblog.po.query.RoleQuery;
+import top.fzqblog.po.vo.PageResult;
 import top.fzqblog.service.RoleService;
+import top.fzqblog.utils.Page;
 
 /**
  * @ClassName RoleServiceImpl
@@ -59,6 +63,21 @@ public class RoleServiceImpl implements RoleService{
 	 */
 	public Set<String> findResourceListByRoleId(Set<Long> roleIds) {
 		return this.roleMapper.selectResourceListByRoleId(roleIds);
+	}
+
+	/* (非 Javadoc)
+	 * Description:
+	 * @see top.fzqblog.service.RoleService#findRolesByPage()
+	 */
+	public PageResult findRolesByPage(Integer page, Integer rows) {
+		RoleQuery roleQuery = new RoleQuery();
+		Long count = this.roleMapper.selectCount(roleQuery);
+		Integer pageNum  = rows==null?  10 : rows;
+		Page myPage = new Page(page, count, pageNum);
+		roleQuery.setPage(myPage);
+		roleQuery.setOrderBy(OrderByEnum.ORDER_BY_SEQ);
+		List<Role> list = this.roleMapper.selectList(roleQuery);
+		return new PageResult(count.intValue(),list);
 	}
 
 }
