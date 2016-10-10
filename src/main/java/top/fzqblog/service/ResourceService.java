@@ -44,4 +44,6 @@ import top.fzqblog.shiro.ShiroUser;
  */
 public interface ResourceService {
 	public List<Tree> findMenu(ShiroUser shiroUser);
+	
+	public List<Tree> findAllTree();
 }

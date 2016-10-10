@@ -12,4 +12,8 @@ public interface ResourceMapper<T,Q> extends BaseMapper<T, Q> {
 	public List<Resource> selectMenuByRoleId(@Param("roleIds") Set<Long> roleIds, @Param("resourceType") Integer resourceType);
 	
 	public List<Resource> selectMenuByRoleIdAndPid(@Param("roleIds") Set<Long> roleIds, @Param("resourceType") Integer resourceType, @Param("pid") Long pid);
+	
+	public List<Resource> selectResourceAllByTypeAndPidNull(@Param("resourceType") Integer resourceType);
+
+	public List<Resource> selectResourceAllByTypeAndPid(@Param("resourceType") Integer resourceType, @Param("pid") Long pid);
 }

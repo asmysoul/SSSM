@@ -7,8 +7,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <%@ include file="../common/basejs.jsp" %>
     <script type="text/javascript">
+    var dataGrid;
     	$(function(){
-    		 var dataGrid;
+    		
     		    $(function() {
     		        dataGrid = $('#dataGrid').datagrid({
     		            url : '${path }' + '/role/roleData',
@@ -60,15 +61,15 @@
     		                formatter : function(value, row, index) {
     		                    var str = '';
     		                        <shiro:hasPermission name="/role/grant">
-    		                            str += '<a href="javascript:void(0)" class="role-easyui-linkbutton-ok" data-options="plain:true,iconCls:\'icon-ok\'" onclick="grantFun(\'{0}\');" >授权</a>';
+    		                            str += '<a href="javascript:void(0)" class="role-easyui-linkbutton-ok" data-options="plain:true,iconCls:\'icon-ok\'" onclick="grantFun(\''+ row.id + '\');" >授权</a>';
     		                        </shiro:hasPermission>
     		                        <shiro:hasPermission name="/role/edit">
     		                            str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
-    		                            str += '<a href="javascript:void(0)" class="role-easyui-linkbutton-edit" data-options="plain:true,iconCls:\'icon-edit\'" onclick="editFun(\'{0}\');" >编辑</a>';
+    		                            str += '<a href="javascript:void(0)" class="role-easyui-linkbutton-edit" data-options="plain:true,iconCls:\'icon-edit\'" onclick="editFun(\''+ row.id + '\');" >编辑</a>';
     		                        </shiro:hasPermission>
     		                        <shiro:hasPermission name="/role/delete">
     		                        str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
-		                            str += '<a href="javascript:void(0)" class="role-easyui-linkbutton-edit" data-options="plain:true,iconCls:\'icon-edit\'" onclick="editFun(\'{0}\');" >删除</a>';
+		                            str += '<a href="javascript:void(0)" class="role-easyui-linkbutton-del" data-options="plain:true,iconCls:\'icon-remove\'" onclick="editFun(\''+ row.id + '\');" >删除</a>';
     		                        </shiro:hasPermission>
     		                    return str;
     		                }
@@ -76,12 +77,47 @@
     		            onLoadSuccess:function(data){
     		                $('.role-easyui-linkbutton-ok').linkbutton({text:'授权',plain:true,iconCls:'icon-ok'});
     		                $('.role-easyui-linkbutton-edit').linkbutton({text:'编辑',plain:true,iconCls:'icon-edit'});
-    		                $('.role-easyui-linkbutton-del').linkbutton({text:'删除',plain:true,iconCls:'icon-del'});
+    		                $('.role-easyui-linkbutton-del').linkbutton({text:'删除',plain:true,iconCls:'icon-remove'});
     		            },
     		            toolbar : '#toolbar'
     		        });
     		    });
     	});
+    	
+    	function closeAuthDialog(){
+    		$("#grantDialog").dialog("close");
+    	}
+    	
+    	function grantFun(id) {
+	        if (id == undefined) {
+	            var rows = dataGrid.datagrid('getSelections');
+	            id = rows[0].id;
+	        } else {
+	            dataGrid.datagrid('unselectAll').datagrid('uncheckAll');
+	        }	        
+	        $('#grantDialog').dialog("open").dialog("setTitle","角色授权");
+	        
+	        var resourceTree = $("#grantTree").tree({
+				lines:true,
+				url: realpath+ "/role/findAllTree",
+				checkbox:true,
+				cascadeCheck:false,
+				onLoadSuccess:function(node, data){
+					 $.post( realpath+ '/role/findResourceIdListByRoleId', {
+		                    id : id
+		                }, function(result) {
+		                    var ids = result.data;
+		                    if (ids.length > 0) {
+		                        for ( var i = 0; i < ids.length; i++) {
+		                            if (resourceTree.tree('find', ids[i])) {
+		                                resourceTree.tree('check', resourceTree.tree('find', ids[i]).target);
+		                            }
+		                        }
+		                    }
+		                }, 'json');
+				}
+			});
+	    }
     </script>
 </head>
 <body class="easyui-layout">
@@ -93,6 +129,14 @@
             <a onclick="addFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-add'">添加</a>
         </shiro:hasPermission>
     </div>
+    <div id="grantDialog"class="easyui-dialog" style="width: 500px;height: 550px;padding: 10px 20px"
+  	closed="true" buttons="#grant-buttons">
+		<ul id="grantTree" class="easyui-tree"></ul>
+	</div>
+	<div id="grant-buttons">
+	<a href="javascript:saveAuth()" class="easyui-linkbutton" iconCls="icon-ok" >授权</a>
+	<a href="javascript:closeAuthDialog()" class="easyui-linkbutton" iconCls="icon-cancel" >关闭</a>
+</div>
 </body>
 <script type="text/javascript" src="${staticPath }/resource/js/role.js"></script>
 </html>

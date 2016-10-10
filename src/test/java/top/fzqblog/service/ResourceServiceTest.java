@@ -69,6 +69,10 @@ public class ResourceServiceTest extends AbstractTestNGSpringContextTests{
 	@Test
 	public void testSelectRoleIdsByUserId(){
 		Set<Long> roleSet = this.userService.findRoleIdsByUserId(1);
-		
+	}
+	
+	@Test
+	public void testFindAllTree(){
+		System.out.println(this.resourceService.findAllTree());
 	}
 }

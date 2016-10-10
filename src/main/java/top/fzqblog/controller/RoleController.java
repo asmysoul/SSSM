@@ -35,6 +35,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import top.fzqblog.po.model.Role;
+import top.fzqblog.service.ResourceService;
 import top.fzqblog.service.RoleService;
 
 /**
@@ -51,6 +52,9 @@ public class RoleController extends BaseController {
 	@Autowired
 	private RoleService roleService;
 	
+	@Autowired
+	private ResourceService resourceService;
+	
 	@RequestMapping("/manager")
 	public String Role(){
 		return "/page/role/role";
@@ -60,5 +64,17 @@ public class RoleController extends BaseController {
 	@RequestMapping("/roleData")
 	public Object roleData(Integer page, Integer rows){
 		return this.roleService.findRolesByPage(page, rows);
+	}
+	
+	@ResponseBody
+	@RequestMapping("findAllTree")
+	public Object findAllTree(){
+		return this.resourceService.findAllTree();
+	}
+	
+	@ResponseBody
+	@RequestMapping("findResourceIdListByRoleId")
+	public Object findResourceIdListByRoleId(Long id){
+		return renderSuccess(this.roleService.findResourceIdListByRoleId(id));
 	}
 }

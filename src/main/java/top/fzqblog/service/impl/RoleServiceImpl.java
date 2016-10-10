@@ -80,4 +80,12 @@ public class RoleServiceImpl implements RoleService{
 		return new PageResult(count.intValue(),list);
 	}
 
+	/* (非 Javadoc)
+	 * Description:
+	 * @see top.fzqblog.service.RoleService#findResourceIdListByRoleId(java.lang.Long)
+	 */
+	public Set<Long> findResourceIdListByRoleId(Long roleId) {
+		return this.roleMapper.selectResourceIdListByRoleId(roleId);
+	}
+
 }

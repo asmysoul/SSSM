@@ -62,6 +62,24 @@
         AND s.resource_type =#{resourceType} AND s.pid =#{pid}
 		order by seq asc
   </select>
+  
+      <!-- 查询所有父菜单 -->
+    <select id="selectResourceAllByTypeAndPidNull" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select distinct
+        <include refid="Base_Column_List"/>
+        from resource
+        where resource_type = #{resourceType}
+        and pid is null order by seq
+    </select>
+    
+    
+     <select id="selectResourceAllByTypeAndPid" resultMap="BaseResultMap">
+        select distinct
+        <include refid="Base_Column_List"/>
+        from resource
+        where resource_type = #{resourceType}
+        and pid = #{pid} order by seq
+    </select>
  
   <delete id="delete" parameterType="java.lang.Long" >
     delete from resource

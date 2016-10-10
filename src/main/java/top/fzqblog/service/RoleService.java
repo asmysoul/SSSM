@@ -45,5 +45,7 @@ import top.fzqblog.po.vo.PageResult;
 public interface RoleService {
 	public Set<String> findResourceListByRoleId(Set<Long> roleIds);
 	
+	public Set<Long> findResourceIdListByRoleId(Long roleId);
+	
 	public PageResult findRolesByPage(Integer page, Integer rows);
 }

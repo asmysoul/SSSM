@@ -40,6 +40,15 @@
  			</foreach>
  		)
  </select>
+ 
+ <select id="selectResourceIdListByRoleId" resultType="java.lang.Long" parameterType="java.lang.Long">
+ 	select re.id from role r 
+ 	left join role_resource rr 
+ 		on r.id=rr.role_id 
+ 	left join resource re
+ 		on rr.resource_id=re.id
+ 		where r.id =#{roleId}
+ </select>
   
   <delete id="delete" parameterType="java.lang.Long" >
     delete from role

@@ -6,4 +6,6 @@ import org.apache.ibatis.annotations.Param;
 
 public interface RoleMapper<T, Q> extends BaseMapper<T, Q> {
    public Set<String> selectResourceListByRoleId(@Param("roleIds") Set<Long> roleIds);
+   
+   public Set<Long> selectResourceIdListByRoleId(@Param("roleId") Long roleId);
 }
