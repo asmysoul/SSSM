@@ -59,4 +59,9 @@ public class RoleServiceTest extends AbstractTestNGSpringContextTests{
 	public void testFindRoleByPage(){
 		System.out.println(this.roleService.findRolesByPage(1, 10));
 	}
+	
+	@Test
+	public void testUpdateAuthorization(){
+		this.roleService.updateAuthorization((long) 1, new Long[]{(long) 1,(long) 121});
+	}
 }

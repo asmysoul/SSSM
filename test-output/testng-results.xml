@@ -2,50 +2,50 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="3113" started-at="2016-10-10T07:18:45Z" finished-at="2016-10-10T07:18:48Z">
+  <suite name="Default suite" duration-ms="3487" started-at="2016-10-11T01:43:35Z" finished-at="2016-10-11T01:43:39Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="3113" started-at="2016-10-10T07:18:45Z" finished-at="2016-10-10T07:18:48Z">
-      <class name="top.fzqblog.service.ResourceServiceTest">
-        <test-method status="PASS" signature="springTestContextBeforeTestClass()[pri:0, instance:top.fzqblog.service.ResourceServiceTest@79079097]" name="springTestContextBeforeTestClass" is-config="true" duration-ms="9" started-at="2016-10-10T15:18:45Z" finished-at="2016-10-10T15:18:45Z">
+    <test name="Default test" duration-ms="3487" started-at="2016-10-11T01:43:35Z" finished-at="2016-10-11T01:43:39Z">
+      <class name="top.fzqblog.service.RoleServiceTest">
+        <test-method status="PASS" signature="springTestContextBeforeTestClass()[pri:0, instance:top.fzqblog.service.RoleServiceTest@79079097]" name="springTestContextBeforeTestClass" is-config="true" duration-ms="12" started-at="2016-10-11T09:43:35Z" finished-at="2016-10-11T09:43:35Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- springTestContextBeforeTestClass -->
-        <test-method status="PASS" signature="springTestContextPrepareTestInstance()[pri:0, instance:top.fzqblog.service.ResourceServiceTest@79079097]" name="springTestContextPrepareTestInstance" is-config="true" duration-ms="2436" started-at="2016-10-10T15:18:45Z" depends-on-methods="org.springframework.test.context.testng.AbstractTestNGSpringContextTests.springTestContextBeforeTestClass" finished-at="2016-10-10T15:18:47Z">
+        <test-method status="PASS" signature="springTestContextPrepareTestInstance()[pri:0, instance:top.fzqblog.service.RoleServiceTest@79079097]" name="springTestContextPrepareTestInstance" is-config="true" duration-ms="2764" started-at="2016-10-11T09:43:35Z" depends-on-methods="org.springframework.test.context.testng.AbstractTestNGSpringContextTests.springTestContextBeforeTestClass" finished-at="2016-10-11T09:43:38Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- springTestContextPrepareTestInstance -->
-        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:top.fzqblog.service.ResourceServiceTest@79079097]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="2" started-at="2016-10-10T15:18:48Z" finished-at="2016-10-10T15:18:48Z">
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:top.fzqblog.service.RoleServiceTest@79079097]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="1" started-at="2016-10-11T09:43:38Z" finished-at="2016-10-11T09:43:38Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void top.fzqblog.service.ResourceServiceTest.testFindAllTree()]]>
+                <![CDATA[public void top.fzqblog.service.RoleServiceTest.testUpdateAuthorization()]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- springTestContextBeforeTestMethod -->
-        <test-method status="PASS" signature="testFindAllTree()[pri:0, instance:top.fzqblog.service.ResourceServiceTest@79079097]" name="testFindAllTree" duration-ms="639" started-at="2016-10-10T15:18:48Z" finished-at="2016-10-10T15:18:48Z">
+        <test-method status="PASS" signature="testUpdateAuthorization()[pri:0, instance:top.fzqblog.service.RoleServiceTest@79079097]" name="testUpdateAuthorization" duration-ms="685" started-at="2016-10-11T09:43:38Z" finished-at="2016-10-11T09:43:39Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testFindAllTree -->
-        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:top.fzqblog.service.ResourceServiceTest@79079097]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="1" started-at="2016-10-10T15:18:48Z" finished-at="2016-10-10T15:18:48Z">
+        </test-method> <!-- testUpdateAuthorization -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:top.fzqblog.service.RoleServiceTest@79079097]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="0" started-at="2016-10-11T09:43:39Z" finished-at="2016-10-11T09:43:39Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void top.fzqblog.service.ResourceServiceTest.testFindAllTree()]]>
+                <![CDATA[public void top.fzqblog.service.RoleServiceTest.testUpdateAuthorization()]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- springTestContextAfterTestMethod -->
-        <test-method status="PASS" signature="springTestContextAfterTestClass()[pri:0, instance:top.fzqblog.service.ResourceServiceTest@79079097]" name="springTestContextAfterTestClass" is-config="true" duration-ms="0" started-at="2016-10-10T15:18:48Z" finished-at="2016-10-10T15:18:48Z">
+        <test-method status="PASS" signature="springTestContextAfterTestClass()[pri:0, instance:top.fzqblog.service.RoleServiceTest@79079097]" name="springTestContextAfterTestClass" is-config="true" duration-ms="0" started-at="2016-10-11T09:43:39Z" finished-at="2016-10-11T09:43:39Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- springTestContextAfterTestClass -->
-      </class> <!-- top.fzqblog.service.ResourceServiceTest -->
+      </class> <!-- top.fzqblog.service.RoleServiceTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

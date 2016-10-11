@@ -88,6 +88,8 @@
     		$("#grantDialog").dialog("close");
     	}
     	
+    	var roleId;
+    	
     	function grantFun(id) {
 	        if (id == undefined) {
 	            var rows = dataGrid.datagrid('getSelections');
@@ -96,7 +98,7 @@
 	            dataGrid.datagrid('unselectAll').datagrid('uncheckAll');
 	        }	        
 	        $('#grantDialog').dialog("open").dialog("setTitle","角色授权");
-	        
+	        roleId = id;
 	        var resourceTree = $("#grantTree").tree({
 				lines:true,
 				url: realpath+ "/role/findAllTree",
@@ -118,6 +120,23 @@
 				}
 			});
 	    }
+    	
+    	function saveAuth(){
+    		var nodes=$('#grantTree').tree('getChecked');
+    		var authArrIds=[];
+    		for(var i=0;i<nodes.length;i++){
+    			authArrIds.push(nodes[i].id);
+    		}
+    		var resourceIds=authArrIds.join(",");
+    		$.post(realpath + "/role/updateAuthorization",{roleId:roleId, resourceIds:resourceIds},function(result){
+    			if(result.success){
+    				$.messager.alert('系统提示','授权成功！');
+    				closeAuthDialog();
+    			}else{
+    				$.messager.alert('系统提示',result.errorMsg);
+    			}
+    		},"json");
+    	}
     </script>
 </head>
 <body class="easyui-layout">

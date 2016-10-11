@@ -48,4 +48,6 @@ public interface RoleService {
 	public Set<Long> findResourceIdListByRoleId(Long roleId);
 	
 	public PageResult findRolesByPage(Integer page, Integer rows);
+	
+	public void updateAuthorization(Long roleId, Long[] resourceId);
 }

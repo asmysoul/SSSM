@@ -55,6 +55,8 @@ public class RoleController extends BaseController {
 	@Autowired
 	private ResourceService resourceService;
 	
+	
+	
 	@RequestMapping("/manager")
 	public String Role(){
 		return "/page/role/role";
@@ -76,5 +78,12 @@ public class RoleController extends BaseController {
 	@RequestMapping("findResourceIdListByRoleId")
 	public Object findResourceIdListByRoleId(Long id){
 		return renderSuccess(this.roleService.findResourceIdListByRoleId(id));
+	}
+	
+	@ResponseBody
+	@RequestMapping("updateAuthorization")
+	public Object updateAuthorization(Long roleId, Long[] resourceIds){
+		this.roleService.updateAuthorization(roleId, resourceIds);
+		return renderSuccess();
 	}
 }

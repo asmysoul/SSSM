@@ -34,14 +34,25 @@
   
   <delete id="delete" parameterType="java.lang.Long" >
     delete from role_resource
-    where id = #{id,jdbcType=BIGINT}
+	<include refid="Base_Condition"/>
   </delete>
   
   <insert id="insert" parameterType="top.fzqblog.po.model.RoleResource" >
-    insert into role_resource (id, role_id, resource_id
+    insert into role_resource (role_id, resource_id
       )
-    values (#{id,jdbcType=BIGINT}, #{roleId,jdbcType=BIGINT}, #{resourceId,jdbcType=BIGINT}
+    values (#{roleId,jdbcType=BIGINT}, #{resourceId,jdbcType=BIGINT}
       )
+  </insert>
+  
+  <insert id="insertBatch">
+  	 insert into role_resource (role_id, resource_id)
+  		 values
+  		 <foreach collection="resourceIds" separator="," item="resourceId">
+  		 	(
+  		 		#{roleId},#{resourceId}
+  		 	)
+  		 </foreach>
+       
   </insert>
   
   

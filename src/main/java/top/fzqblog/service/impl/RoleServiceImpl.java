@@ -34,11 +34,16 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import top.fzqblog.mapper.RoleMapper;
+import top.fzqblog.mapper.RoleResourceMapper;
 import top.fzqblog.po.enums.OrderByEnum;
 import top.fzqblog.po.model.Role;
+import top.fzqblog.po.model.RoleResource;
 import top.fzqblog.po.query.RoleQuery;
+import top.fzqblog.po.query.RoleResourceQuery;
 import top.fzqblog.po.vo.PageResult;
 import top.fzqblog.service.RoleService;
 import top.fzqblog.utils.Page;
@@ -56,6 +61,9 @@ public class RoleServiceImpl implements RoleService{
 	
 	@Autowired
 	private RoleMapper<Role, RoleQuery> roleMapper;
+	
+	@Autowired
+	private RoleResourceMapper<RoleResource, RoleResourceQuery> roleResourceMapper;
 
 	/* (非 Javadoc)
 	 * Description:
@@ -86,6 +94,19 @@ public class RoleServiceImpl implements RoleService{
 	 */
 	public Set<Long> findResourceIdListByRoleId(Long roleId) {
 		return this.roleMapper.selectResourceIdListByRoleId(roleId);
+		
+	}
+
+	/* (非 Javadoc)
+	 * Description:
+	 * @see top.fzqblog.service.RoleService#updateAuthorization(java.lang.Long, java.lang.Long[])
+	 */
+	@Transactional(propagation=Propagation.REQUIRES_NEW)
+	public void updateAuthorization(Long roleId, Long[] resourceIds) {
+		RoleResourceQuery roleResourceQuery = new RoleResourceQuery();
+		roleResourceQuery.setRoleId(roleId);
+		this.roleResourceMapper.delete(roleResourceQuery);
+		this.roleResourceMapper.insertBatch(roleId, resourceIds);
 	}
 
 }
