@@ -81,9 +81,8 @@ public class SysLogAspect {
 	         Object[] params = point.getArgs();
 	         StringBuffer bfParams = new StringBuffer();
 	         Enumeration<String> paraNames = null;
-	         HttpServletRequest request = null;
+	         HttpServletRequest request =  ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
 	         if (params != null && params.length > 0) {
-	             request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
 	             paraNames = request.getParameterNames();
 	             String key;
 	             String value;
@@ -96,10 +95,27 @@ public class SysLogAspect {
 	                 bfParams.append(request.getQueryString());
 	             }
 	         }
+	         
+	  
 
 	         String strMessage = String
 	                 .format("[类名]:%s,[方法]:%s,[参数]:%s", strClassName, strMethodName, bfParams.toString());
 	         LOGGER.info(strMessage);
+	         
+	         if("postLogin".equals(strMethodName)){
+	        	 String loginName = request.getParameter("loginname");
+	        	 SysLog sysLog = new SysLog();
+                 sysLog.setLoginName(loginName);
+                 sysLog.setRoleName(loginName);
+                 sysLog.setOpContent(strMessage);
+                 sysLog.setCreateTime(new Date());
+                 if (request != null) {
+                     sysLog.setClientIp(request.getRemoteAddr());
+                 }
+                 LOGGER.info(sysLog.toString());
+                 sysLogService.addSysLog(sysLog);
+	         }
+	         
 	         if (isWriteLog(strMethodName)) {
 	             try {
 	                 Subject currentUser = SecurityUtils.getSubject();
